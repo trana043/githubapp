@@ -1,0 +1,23 @@
+<div *ngIf='!info ||info?.length==0'>
+    Unfortunately, There is no repositories for this user
+</div>
+<button (click)="onBack()">Back</button>
+<div *ngIf='info?.length >0'>
+    <table>
+        <tr>
+            <th> name</th>
+            <th>link</th>
+            <th>Pushed at</th>
+            <th>Created at</th>
+            <th>Updated at</th>
+
+        </tr>
+        <tr *ngFor='let repo of info'>
+            <td> {{repo.name}}</td>
+            <td><a [href]='repo.html_url'> link </a></td>
+            <td>{{repo.pushed_at| date:"MM/dd/yy"}}</td>
+            <td>{{repo.created_at| date:"MM/dd/yy"}}</td>
+            <td>{{repo.updated_at| date:"MM/dd/yy"}}</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,18 @@
+
+  <h2>
+    You are logged in as {{user}}
+  </h2>
+  Search: <input [(ngModel)]='searchUser' (change)='onChange()'>
+  <h2 *ngIf='searchUser.length'>
+    You are searching for {{searchUser}}
+  </h2>
+
+  <div *ngIf='displayInfo && displayInfo.length>0'>
+    <table>
+        <tr *ngFor='let info of displayInfo'>
+           <td>  {{info.login}}</td> <td> <img [src]='info.avatar_url' style="width:128px;height:128px;"></td>
+            <td><a href={{info.html_url}}> link</a></td>
+            <td><a [routerLink]="['/commitdetails',info.login]">commit history</a></td>
+            <td><router-outlet></router-outlet></td>
+          </tr>
+    </table>
